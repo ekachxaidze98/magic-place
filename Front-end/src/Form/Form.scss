@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Niconne&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Niconne|Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Niconne&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Niconne|Satisfy&display=swap");
 
 $bg-fallback: #ee9ca7;
 $bg-webkit: -webkit-linear-gradient(to top, #ffdde1, #ee9ca7);
 $bg: linear-gradient(to top, #ffdde1, #ee9ca7);
 
-$form-primary: #61d5df;;
+$form-primary: #61d5df;
 
 $luna-size: 190px;
 $luna-head-size: $luna-size - 10px;
@@ -36,13 +36,13 @@ body {
   overflow: hidden;
 }
 
-.luna-form{
-    background-image: url("../../images/background.png");
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+.luna-form {
+  background-image: url("../images/background.png");
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 button,
@@ -59,10 +59,9 @@ input {
   height: 40px;
 }
 
-
 figcaption {
   text-align: center;
-  font-family: 'Satisfy', cursive;
+  font-family: "Satisfy", cursive;
   font-size: 30px;
   color: $form-primary;
   margin-bottom: -20px;
@@ -109,8 +108,8 @@ figcaption {
   height: $luna-size;
   position: relative;
   @include center();
-  animation: shake .5s;
-    margin-bottom: 20px;
+  animation: shake 0.5s;
+  margin-bottom: 20px;
   .head {
     position: absolute;
     @include center();
@@ -131,7 +130,7 @@ figcaption {
     border-radius: 100%;
     box-shadow: inset 0px -8px rgb(233, 210, 2);
     top: 15px;
-    transition: .2s;
+    transition: 0.2s;
     @include center();
   }
 
@@ -201,10 +200,30 @@ figcaption {
               $luna-white 99%,
               transparent 100%
             ),
-            radial-gradient(ellipse 3px 3px at 72% 70%, $luna-white 0%, $luna-white 99%, transparent 100%),
-            radial-gradient(ellipse 10px 12px at 45% 45%, black 0%, black 99%, transparent 100%),
-            radial-gradient(ellipse 20px 25px at 48% 40%, $luna-eyes 0%, $luna-eyes 99%, transparent 100%),
-            radial-gradient(ellipse 20px 25px at 43% 55%, $luna-eyes-light 0%, $luna-eyes-light 99%, transparent 100%);
+            radial-gradient(
+              ellipse 3px 3px at 72% 70%,
+              $luna-white 0%,
+              $luna-white 99%,
+              transparent 100%
+            ),
+            radial-gradient(
+              ellipse 10px 12px at 45% 45%,
+              black 0%,
+              black 99%,
+              transparent 100%
+            ),
+            radial-gradient(
+              ellipse 20px 25px at 48% 40%,
+              $luna-eyes 0%,
+              $luna-eyes 99%,
+              transparent 100%
+            ),
+            radial-gradient(
+              ellipse 20px 25px at 43% 55%,
+              $luna-eyes-light 0%,
+              $luna-eyes-light 99%,
+              transparent 100%
+            );
 
           &:before,
           &:after {
@@ -296,7 +315,7 @@ figcaption {
 
       &:before,
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         width: 25.5px;
         height: 20px;
@@ -322,12 +341,14 @@ figcaption {
       top: 10px;
       border-radius: 20px;
       background-color: $luna-fur;
-      box-shadow: inset -5px 8px darken($luna-fur, 10%), inset 2px 2px darken($luna-fur, 10%);
+      box-shadow: inset -5px 8px darken($luna-fur, 10%),
+        inset 2px 2px darken($luna-fur, 10%);
       .inner-ear {
         @extend .ear;
         background-color: $luna-ears;
-        box-shadow: inset -5px 15px darken($luna-ears, 10%), inset 4px 4px darken($luna-ears, 10%),
-        -2px 4px 5px darken($luna-fur, 10%);
+        box-shadow: inset -5px 15px darken($luna-ears, 10%),
+          inset 4px 4px darken($luna-ears, 10%),
+          -2px 4px 5px darken($luna-fur, 10%);
         width: 80px;
         top: 0;
       }
@@ -362,34 +383,34 @@ figcaption {
 }
 // https://tympanus.net/codrops/2016/03/21/animated-animals-css-svg/
 .luna-tail {
+  background-color: $luna-fur;
+  height: 20px;
+  width: 40px;
+  position: absolute;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+  top: 70%;
+  left: 44%;
+  .tail {
+    // each nested tail will be relative to the parent
+    // this allows the tail to be positioned below
+    // the previous div
+    position: relative;
+    bottom: 1px;
     background-color: $luna-fur;
-    height: 20px;
+    height: 30px;
     width: 40px;
-    position: absolute;
-    border-radius: 50px;
-    transform: translate(-50%, -50%);
-    top: 70%;
-    left: 44%;
+    border-radius: 20px 20px 0 0px;
+    animation: tail 10s ease infinite;
+    transform: rotate($luna-tail-angle);
+    transform-origin: center center;
     .tail {
-      // each nested tail will be relative to the parent
-      // this allows the tail to be positioned below 
-      // the previous div
-      position: relative;
-      bottom: 1px;
-      background-color: $luna-fur;
-      height: 30px;
-      width: 40px;
-      border-radius: 20px 20px 0 0px;
-      animation: tail 10s ease infinite;
-      transform: rotate($luna-tail-angle);
-      transform-origin: center center;
-      .tail {
-        left: -40%;
-      }
-      &.last {
-        border-radius: 20px;
-      }
+      left: -40%;
     }
+    &.last {
+      border-radius: 20px;
+    }
+  }
 }
 
 .logged-in {
@@ -398,17 +419,23 @@ figcaption {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  transition: display .5s ease;
+  transition: display 0.5s ease;
 }
 
 @keyframes tail {
-  0%, 20%, 75%, 100% {
+  0%,
+  20%,
+  75%,
+  100% {
     transform: rotate(-$luna-tail-angle);
   }
-  35%, 40% {
+  35%,
+  40% {
     transform: rotate(16deg);
   }
-  10%, 55%, 85%{
+  10%,
+  55%,
+  85% {
     transform: rotate($luna-tail-angle);
   }
 }
@@ -440,25 +467,20 @@ figcaption {
 }
 
 .form__header {
-    display: flex;
-    justify-content: space-between;
-    .form__img-wrapper {
-        width: 51px;
-        height: 30px;
-        .form__img-wrapper img {
-            width: 100%;
-            height: 100%;
-        }
+  display: flex;
+  justify-content: space-between;
+  .form__img-wrapper {
+    width: 51px;
+    height: 30px;
+    .form__img-wrapper img {
+      width: 100%;
+      height: 100%;
     }
-    .form__heading {
-        font-size: 18px;
-        color: #171717;
-        text-transform: capitalize;
-        margin-right: 70px;
-    }
+  }
+  .form__heading {
+    font-size: 18px;
+    color: #171717;
+    text-transform: capitalize;
+    margin-right: 70px;
+  }
 }
-
-
-
-
-
