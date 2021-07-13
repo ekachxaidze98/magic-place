@@ -24,6 +24,7 @@ router.post("/register", async (request, response) => {
     const userForToken = {
       name: savedUser.name,
       id: savedUser._id,
+      email: savedUser.email,
     };
 
     const token = jwt.sign(userForToken, "secret");
@@ -55,6 +56,7 @@ router.post("/login", async (request, response) => {
     const userForToken = {
       username: user.name,
       id: user._id,
+      email: user.email,
     };
 
     const token = jwt.sign(userForToken, "secret");
@@ -64,6 +66,27 @@ router.post("/login", async (request, response) => {
     response.status(200).send({ user });
   } catch (err) {
     response.json(err);
+  }
+});
+
+router.post("/check", async (request, response) => {
+  try {
+    const body = request.body;
+
+    const { email } = jwt.verify(body.token, "secret");
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return response.status(401).json({
+        error: "invalid username or password",
+      });
+    }
+
+    response.status(200).send({ user });
+  } catch (err) {
+    response.status(401).json({
+      error: "invalid username or password",
+    });
   }
 });
 
