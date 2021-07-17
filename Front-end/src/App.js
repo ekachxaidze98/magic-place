@@ -1,12 +1,21 @@
-import "./App.css";
-import CatForm from "./Form/form";
-import CatSignForm from "./Form/SIgnUp";
+import React, { useState, useEffect } from "react";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 function App() {
   return (
-    <div className="App">
-      <CatForm />
-      {/* <CatSignForm /> */}
-    </div>
+    <>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+      </Switch>
+    </>
   );
 }
 

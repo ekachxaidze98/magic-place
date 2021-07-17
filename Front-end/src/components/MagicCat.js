@@ -1,21 +1,7 @@
 import React from "react";
-import "./Form.scss";
-import { Button, InputAdornment, TextField } from "@material-ui/core";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
-import { useFormik } from "formik";
+import "../styles/magicCat.scss";
 
-const CatForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    // validationSchema: logInSchema,
-  });
+export default function MagicCat(props) {
   return (
     <div className="luna-form">
       <div class="luna-tail">
@@ -63,7 +49,7 @@ const CatForm = () => {
           <div className="form__img-wrapper">
             <img className="form__img" alt="" />
           </div>
-          <h2 className="form__heading">Members Log In</h2>
+          <h2 className="form__heading">{props.title}</h2>
           <div></div>
         </div>
         <div class="luna">
@@ -92,48 +78,7 @@ const CatForm = () => {
           </div>
           <div class="whiskers"></div>
         </div>
-        <form onSubmit={formik.handleSubmit} className="authorization__form">
-          <TextField
-            placeholder="E-mail"
-            name="email"
-            id="email"
-            variant="outlined"
-            style={{
-              width: "100%",
-              color: "grey",
-              margin: "15px 0px",
-              outline: "none",
-            }}
-            color="primary"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <MailOutlineIcon fontSize="small" color="primary" />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            placeholder="Password"
-            name="password"
-            id="password"
-            variant="outlined"
-            type="password"
-            style={{ width: "100%", color: "grey", margin: "15px 0px" }}
-            color="primary"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <VpnKeyOutlinedIcon fontSize="small" color="primary" />
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <Button variant="contained" color="primary" fullWidth type="submit">
-            Log in
-          </Button>
-        </form>
+        <form className="authorization__form">{props.children}</form>
       </div>
       <div class="logged-in">
         <div class="gif-wrapper">
@@ -146,6 +91,4 @@ const CatForm = () => {
       </div>
     </div>
   );
-};
-
-export default CatForm;
+}
