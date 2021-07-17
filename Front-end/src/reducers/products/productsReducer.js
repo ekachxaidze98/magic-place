@@ -1,3 +1,5 @@
+import * as types from "./productsActionTypes";
+
 const initState = {
   products: [],
   sortedProducts: [],
@@ -9,11 +11,10 @@ const initState = {
 
 const productsReducer = (state = initState, action) => {
   switch (action.type) {
-    case "FETCH_PRODUCTS":
+    case types.GET_PRODUCT_SUCCESS:
       return {
         ...state,
-        products: action.payload.products,
-        sortedProducts: action.payload.sorted,
+        products: action.payload,
         isLoading: false,
       };
 

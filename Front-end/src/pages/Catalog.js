@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, TextField } from "@material-ui/core";
-import { addProduct } from "../reducers/products/productsActions";
+import { addProduct, getProducts } from "../reducers/products/productsActions";
 
 const styles = (theme) => ({
   root: {
@@ -20,7 +20,13 @@ const styles = (theme) => ({
 });
 
 export default function Catalog({ open, setOpen }) {
+  const products = useSelector((state) => state.products.products);
+  console.log(products);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
 
   const { values, setFieldValue, handleChange, handleSubmit, touched, errors } =
     useFormik({
@@ -33,7 +39,6 @@ export default function Catalog({ open, setOpen }) {
       //   validationSchema: addProductValidation,
       onSubmit: (values) => {
         dispatch(addProduct(values));
-        console.log(values);
       },
     });
 

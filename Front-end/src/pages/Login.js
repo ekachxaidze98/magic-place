@@ -16,7 +16,6 @@ const CatForm = () => {
       password: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       dispatach(loginAction(values));
     },
     // validationSchema: logInSchema,

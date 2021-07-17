@@ -13,12 +13,9 @@ const Api = (query) => {
   instance.interceptors.response.use(
     (response) => response,
     (error) => {
-      console.log(error.response.status === 401);
-
       if (error.response.status === 401) {
         localStorage.removeItem("token");
         window.location = "/register";
-        console.log("ait");
       }
     }
   );

@@ -7,7 +7,7 @@ export const addProduct = (data) => async (dispatch) => {
     const product = await productApi.post("", {
       ...data,
     });
-    console.log(product);
+
     alert("Successfully added");
     dispatch({
       type: types.ADD_PRODUCT_SUCCESS,
@@ -16,6 +16,25 @@ export const addProduct = (data) => async (dispatch) => {
     alert("Could not be added");
     dispatch({
       type: types.ADD_PRODUCT_FAILURE,
+    });
+  }
+};
+
+export const getProducts = () => async (dispatch) => {
+  dispatch({
+    type: "LOADING_DETAIL",
+  });
+  try {
+    const productApi = Api("products");
+    const products = await productApi.get();
+
+    dispatch({
+      type: types.GET_PRODUCT_SUCCESS,
+      payload: products.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: types.GET_PRODUCT_FAILURE,
     });
   }
 };
