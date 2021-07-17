@@ -33,6 +33,7 @@ router.post("/register", async (request, response) => {
 
     response.json(savedUser);
   } catch (err) {
+    console.log(err);
     response.json(err);
   }
 });
@@ -72,7 +73,6 @@ router.post("/login", async (request, response) => {
 router.post("/check", async (request, response) => {
   try {
     const body = request.body;
-
     const { email } = jwt.verify(body.token, "secret");
     const user = await User.findOne({ email });
 

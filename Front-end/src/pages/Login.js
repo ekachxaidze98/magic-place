@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { loginAction } from "../reducers/auth/authActions";
 import MagicCat from "../components/MagicCat";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -6,13 +8,16 @@ import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
 import { useFormik } from "formik";
 
 const CatForm = () => {
-  const formik = useFormik({
+  const dispatach = useDispatch();
+
+  const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     onSubmit: (values) => {
       console.log(values);
+      dispatach(loginAction(values));
     },
     // validationSchema: logInSchema,
   });
@@ -23,6 +28,8 @@ const CatForm = () => {
         name="email"
         id="email"
         variant="outlined"
+        value={values.email}
+        onChange={handleChange}
         style={{
           width: "100%",
           color: "grey",
@@ -42,6 +49,8 @@ const CatForm = () => {
         placeholder="Password"
         name="password"
         id="password"
+        value={values.password}
+        onChange={handleChange}
         variant="outlined"
         type="password"
         style={{ width: "100%", color: "grey", margin: "15px 0px" }}
@@ -55,7 +64,12 @@ const CatForm = () => {
         }}
       />
 
-      <Button variant="contained" color="primary" fullWidth type="submit">
+      <Button
+        variant="contained"
+        color="primary"
+        fullWidth
+        onClick={handleSubmit}
+      >
         Log in
       </Button>
     </MagicCat>

@@ -1,19 +1,25 @@
 import React from "react";
-import MagicCat from "../components/MagicCat";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import BorderColorOutlinedIcon from "@material-ui/icons/BorderColorOutlined";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import MagicCat from "../components/MagicCat";
+import { registerAction } from "../reducers/auth/authActions";
 
-const CatForm = () => {
-  const formik = useFormik({
+const Register = () => {
+  const dispatch = useDispatch();
+
+  const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
+      name: "",
+      username: "",
       password: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(registerAction(values));
     },
     // validationSchema: logInSchema,
   });
@@ -22,8 +28,10 @@ const CatForm = () => {
       <TextField
         placeholder="First Name"
         variant="outlined"
-        name="firstName"
+        name="name"
         id="firstName"
+        value={values.name}
+        onChange={handleChange}
         style={{ width: "100%", color: "grey", margin: "15px 0px" }}
         color="primary"
         InputProps={{
@@ -35,9 +43,11 @@ const CatForm = () => {
         }}
       />
       <TextField
-        placeholder="Last Name"
-        name="lastName"
-        id="lastName"
+        placeholder="Username"
+        name="username"
+        id="username"
+        value={values.username}
+        onChange={handleChange}
         variant="outlined"
         style={{ width: "100%", color: "grey", margin: "15px 0px" }}
         color="primary"
@@ -54,6 +64,8 @@ const CatForm = () => {
         placeholder="E-mail"
         name="email"
         id="email"
+        value={values.email}
+        onChange={handleChange}
         variant="outlined"
         style={{
           width: "100%",
@@ -74,6 +86,8 @@ const CatForm = () => {
         placeholder="Password"
         name="password"
         id="password"
+        value={values.password}
+        onChange={handleChange}
         variant="outlined"
         type="password"
         style={{ width: "100%", color: "grey", margin: "15px 0px" }}
@@ -87,11 +101,16 @@ const CatForm = () => {
         }}
       />
 
-      <Button variant="contained" color="primary" fullWidth type="submit">
+      <Button
+        variant="contained"
+        color="primary"
+        fullWidth
+        onClick={handleSubmit}
+      >
         Sign up
       </Button>
     </MagicCat>
   );
 };
 
-export default CatForm;
+export default Register;

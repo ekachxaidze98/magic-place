@@ -1,39 +1,26 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
-    unique: false,
   },
-  username: {
+  description: {
     type: String,
     required: true,
-    unique: true,
   },
-  email: {
+  price: {
+    type: Number,
+    required: true,
+  },
+  image: {
     type: String,
     required: true,
-    unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-    minlength: 4,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
-  token: {
-    type: String,
-  },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
-  cart: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
-  ],
 });
 
 schema.set("toJSON", {
@@ -41,8 +28,7 @@ schema.set("toJSON", {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
     delete returnedObject.__v;
-    delete returnedObject.password;
   },
 });
 
-module.exports = mongoose.model("User", schema);
+module.exports = mongoose.model("Product", schema);
