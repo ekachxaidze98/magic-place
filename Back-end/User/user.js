@@ -28,12 +28,7 @@ const schema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  cart: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
-  ],
+  cart: [{}],
 });
 
 schema.set("toJSON", {
