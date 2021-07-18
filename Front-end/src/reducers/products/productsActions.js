@@ -38,3 +38,12 @@ export const getProducts = () => async (dispatch) => {
     });
   }
 };
+
+export const selectProduct = (filtered) => {
+  return {
+    type: types.SELECT_PRODUCT,
+    payload: {
+      selectedProducts: filtered,
+    },
+  };
+};

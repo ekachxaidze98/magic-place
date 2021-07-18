@@ -13,6 +13,7 @@ import Catalog from "./pages/Catalog";
 import SideBar from "./components/sidebar/SideBar";
 import { tokenCheckAction } from "./reducers/auth/authActions";
 import { Grid, makeStyles } from "@material-ui/core";
+import magicPlace from "./components/MagicPlace/MagicPlace";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
               </Route>
 
               <Route exact path="/catalog" component={Catalog} />
+              <Route path="/list" component={magicPlace}></Route>
             </Switch>
           ) : (
             <Switch>

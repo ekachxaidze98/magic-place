@@ -4,6 +4,7 @@ const initState = {
   products: [],
   sortedProducts: [],
   searchedProducts: [],
+  selectedProducts: [],
   isLoading: true,
   productModal: 0,
   errorMessage: "",
@@ -26,6 +27,12 @@ const productsReducer = (state = initState, action) => {
         ...state,
         products: filtered,
         searchedProducts: filtered,
+      };
+
+    case types.SELECT_PRODUCT:
+      return {
+        ...state,
+        selectedProducts: action.payload.selectedProducts,
       };
 
     case "LOADING_DETAIL":
