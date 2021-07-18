@@ -1,0 +1,42 @@
+.SideBar__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.SideBar__list--item {
+    list-style-type: none;
+    cursor: pointer;
+    width: 100%;
+
+}
+.SideBar__list--itemLink {
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconolor {
+    color: #49547d;
+    transition: color 0.3s ease-in;
+}
+
+.iconolor:hover {
+    color: #61D5DF;
+}
+.activeNav {
+    background-color: rgba(97,213,223,.05);
+}
+.activeNav::before{
+    content: "";
+    width: 3px;
+    height: 42px;
+    display: block;
+    background-color: #61d5df;
+    position: absolute;
+    left: 0;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+}

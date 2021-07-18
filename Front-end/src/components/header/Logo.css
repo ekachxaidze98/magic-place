@@ -1,0 +1,12 @@
+.sideBar__logo {
+    padding: 23.7px 0;
+    border-bottom: 1px solid #dde3ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sideBar__logoimg {
+    width: 38px;
+    height: 25px;
+}

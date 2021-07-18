@@ -1,0 +1,178 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage {
+    @include flexCenter;
+    width: 100%;
+    height: 100%;
+}
+
+.bee {
+    animation: movement 10s linear infinite;
+    position: relative;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+
+    &__body {
+        position: relative;
+    }
+    &__circle {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+
+        &--black {
+            background-color: #000000;
+        }
+        &--yellow {
+            background-color: #FCE323;
+        }
+    }
+
+    &__face {
+        position: relative;
+        z-index: 3;
+    }
+    &__eyes {
+        position: absolute;
+        width: 40px;
+        height: 10px;
+        top: 25%;
+        left: 25%;
+    }
+
+    &__eye {
+        display: inline-block;
+        background-color: white;
+        width: 12px;
+        height: 6px;
+        margin: 1px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    &__antennas {
+        position: relative;
+        width: 60px;
+        top: -25px;
+        text-align: center;
+        z-index: 2;
+
+    }
+
+    &__antenna {
+        display: inline-block;
+        width:10px;
+        height:30px;
+        border-radius: 20px 20px 0 0;
+        background-color:black;
+        margin: 5px;
+
+        &--left {
+            transform: rotate(-20deg);
+            transform-origin: bottom left;
+            animation: waving-left 1s linear infinite;
+        }
+
+        &--right {
+            transform-origin: bottom right;
+            transform: rotate(20deg);
+            animation: waving-right 1s linear infinite;
+        }
+    }
+
+    &__wings {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        width: 70px;
+        z-index: 1;
+    }
+
+    &__wing {
+        border-radius: 100%;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: #e9f7f0d5;
+
+        &--left {
+            transform: skewY(30deg) rotate(-20deg, 10deg);
+            animation: flap 0.5s linear infinite;
+        }
+    }
+}
+
+@keyframes waving-left {
+    0% {
+        transform:rotate(-25deg);
+    }
+
+    50% {
+        transform:rotate(-10deg);
+    }
+
+    100% {
+        transform:rotate(-25deg);
+    }
+}
+
+
+@keyframes waving-right {
+    0% {
+        transform:rotate(25deg);
+    }
+
+    50% {
+        transform:rotate(10deg);
+    }
+
+    100% {
+        transform:rotate(25deg);
+    }
+}
+
+@keyframes flap {
+    0% {
+        transform: skewY(30deg) rotate( 20deg, 10deg);
+    }
+
+    100% {
+        transform: skewY(30deg) rotate(-20deg, 100deg);
+    }
+}
+@for $i from 1 through 4 {
+    .helper {
+        &__shift {
+            &--right-#{$i} {
+                left: (#{$i * 10}px);
+            }
+        }
+    }
+}
+
+
+@keyframes movement {
+    0%{
+        left:0%;
+    }
+
+    50%,80% {
+        top: 25%;
+        left: 50%;
+    }
+
+    100%{
+        left:80%;
+    }
+}

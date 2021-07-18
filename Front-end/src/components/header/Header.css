@@ -1,0 +1,30 @@
+.header {
+    background-color: #F8F9FA;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__selection {
+    padding-left: 15px;
+    border-left: 1px solid #979797;
+    font-size: 11px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.log-out {
+    margin-left: 15px;
+}
+@media only screen and (max-width: 768px) {
+    .header__selection {
+        display: none;
+    }
+
+}

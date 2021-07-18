@@ -1,0 +1,24 @@
+.header__button {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #61D5DF;
+    padding: 10px 15px;
+    margin-right: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.header__button--big {
+    padding: 15px;
+}
+
+@media only screen and (max-width: 970px) {
+    .header__button {
+        font-size: 7px;
+        padding: 10px 25px;
+    }
+}
